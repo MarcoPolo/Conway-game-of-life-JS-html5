@@ -12,12 +12,58 @@ var canvas = document.getElementById('canvasElement');
 var ctx = canvas.getContext('2d');
 
 
-canvas.addEventListener('click', on_canvas_click, false);
+canvas.addEventListener('mousedown', draw, false);
+canvas.addEventListener('mouseup', stopdraw, false);
 
 toKill = [];
 toCreate = [];
 
 buildArray();
+
+$(document).mousemove(function(e){
+    mouseX = e.pageX - canvas.offsetLeft;
+    mouseY = e.pageY - canvas.offsetTop;
+});
+
+function clear(){
+    for (var i=0; i<sizeX; i++){
+        for (var j=0; j<sizeY; j++){
+            kill(i,j);
+        }
+    }
+}
+
+function resize(newX,newY){
+    sizeX = newX/size;
+    sizeY = newY/size;
+}
+
+function draw(){
+    console.log('down woooo');
+    x=Math.floor(mouseX/size);
+    y=Math.floor(mouseY/size);
+    if ( historyArray[x][y] ) {
+        shouldcreate = false;
+    }else{
+        shouldcreate = true;
+    }
+    t = setInterval(function(){
+        
+        x=Math.floor(mouseX/size);
+        y=Math.floor(mouseY/size);
+        if ( shouldcreate) {
+            create(x,y);
+        }else{
+            kill(x,y);
+        }
+    }, 10);
+}
+
+
+function stopdraw(e){
+    console.log('up woooo');
+    clearInterval(t);
+}
 
 function buildRandomData(length){
     for (var i=0;i<length;i++){

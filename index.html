@@ -1,11 +1,14 @@
 <html>
 <div id="lol">
     <span> Size: </span>
-    <input id=sizeX type="text"  value="800">
-    <input id=sizeY type="text"  value="500">
+    <input id=sizeX type="text"  value="800" />
+    <input id=sizeY type="text"  value="500" />
     <span id=start>Start </span>
     <span id=pause>Pause </span>
     <span id=rand>random </span>
+    <span >Block size: </span>
+    <input id=blocksize type="text"  value="4" />
+    <span id=clear>Clear</span>
 </div>
 
 <canvas id="canvasElement" width=800 height=500 style="border:1px solid black"></canvas>
@@ -24,6 +27,14 @@
         $('#canvasElement').attr('height',$(this).val());
         buildArray()
     });
+    $('#blocksize').change(function(){
+        clear();
+        size = parseInt($(this).val());
+        sizeX = parseInt($('#sizeX').val());
+        sizeY = parseInt($('#sizeY').val());
+        resize(sizeX,sizeY);
+        buildArray();
+    });
     $('#rand').click(function(){
        buildRandomData('1000');
     })
@@ -34,6 +45,10 @@
     $('#pause').click(function(){
        continueGame = false;
     })
+
+    $('#clear').click(function(){
+       clear(); 
+    });
 
 </script>
 
