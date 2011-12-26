@@ -1,0 +1,41 @@
+<html>
+<div id="lol">
+    <span> Size: </span>
+    <input id=sizeX type="text"  value="800">
+    <input id=sizeY type="text"  value="500">
+    <span id=start>Start </span>
+    <span id=pause>Pause </span>
+    <span id=rand>random </span>
+</div>
+
+<canvas id="canvasElement" width=800 height=500 style="border:1px solid black"></canvas>
+
+<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $('#sizeX').change(function(){
+        console.log(this);
+        sizeX=$(this).val()/4;
+        $('#canvasElement').attr('width',$(this).val());
+        buildArray();
+    });
+    $('#sizeY').change(function(){
+        sizeY=$(this).val()/4;
+        $('#canvasElement').attr('height',$(this).val());
+        buildArray()
+    });
+    $('#rand').click(function(){
+       buildRandomData('1000');
+    })
+    $('#start').click(function(){
+       continueGame = true;
+       playGame();
+    })
+    $('#pause').click(function(){
+       continueGame = false;
+    })
+
+</script>
+
+<script type="text/javascript" charset="utf-8" src="life.js"></script>
+</html>
