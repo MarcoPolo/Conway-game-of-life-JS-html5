@@ -177,6 +177,46 @@ function playGame(){
     }
 }
 
+function makeGun(startPos){
+    var s = startPos;
+    var d = startPos;
+    create(s,d+2)
+    create(s,d+3)
+    create(s+1,d+2)
+    create(s+1,d+3)
+    create(s+8,d+3)
+    create(s+8,d+4)
+    create(s+9,d+2)
+    create(s+9,d+4)
+    create(s+10,d+2)
+    create(s+10,d+3)
+    create(s+16,d+4)
+    create(s+16,d+5)
+    create(s+16,d+6)
+    create(s+17,d+4)
+    create(s+18,d+5)
+    create(s+22,d+1)
+    create(s+22,d+2)
+    create(s+23,d+0)
+    create(s+23,d+2)
+    create(s+24,d+0)
+    create(s+24,d+1)
+    create(s+24,d+12)
+    create(s+24,d+13)
+    create(s+25,d+12)
+    create(s+25,d+14)
+    create(s+26,d+12)
+    create(s+34,d)
+    create(s+34,d+1)
+    create(s+35,d)
+    create(s+35,d+1)
+    create(s+35,d+7)
+    create(s+35,d+8)
+    create(s+35,d+9)
+    create(s+36,d+7)
+    create(s+37,d+8)
+
+}
 
 gameInterval = 100;
 continueGame = true;
